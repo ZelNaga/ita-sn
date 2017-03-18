@@ -1,14 +1,47 @@
 group 'com.ita'
 version '1.0'
 
-apply plugin: 'java'
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.4.RELEASE")
+    }
+}
 
-sourceCompatibility = 1.5
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+
+jar {
+    baseName = 'pay-ws'
+    version =  '0.1.0'
+}
 
 repositories {
     mavenCentral()
 }
 
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.11'
+    /*compile group: 'org.springframework.hateoas.com.ita.security', name: 'spring-hateoas.com.ita.security-core', version: '4.2.1.RELEASE'
+    compile group: 'or/home/asv/IdeaProjects/pay-wsg.springframework.hateoas.com.ita.security', name: 'spring-hateoas.com.ita.security-web', version: '4.2.1.RELEASE'
+    compile group: 'org.springframework.hateoas.com.ita.security', name: 'spring-hateoas.com.ita.security-ldap', version: '4.2.1.RELEASE'
+    compile group: 'org.springframework.hateoas.com.ita.security', name: 'spring-hateoas.com.ita.security-taglibs', version: '4.2.1.RELEASE'*/
+
+
+    compile("com.h2database:h2")
+    compile("org.springframework.com.ita.security:spring-com.ita.security-web")
+    compile("org.springframework.com.ita.security.oauth:spring-com.ita.security-oauth2")
+    compile("org.springframework.boot:spring-boot-starter-hateoas")
+    compile("org.springframework.boot:spring-boot-starter-data-jpa")
+    compile("org.springframework.boot:spring-boot-devtools")
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '1.5.1.RELEASE'
+
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+    testCompile("junit:junit")
 }
