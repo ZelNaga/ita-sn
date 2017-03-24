@@ -28,15 +28,10 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 dependencies {
-    /*compile group: 'org.springframework.hateoas.com.ita.security', name: 'spring-hateoas.com.ita.security-core', version: '4.2.1.RELEASE'
-    compile group: 'or/home/asv/IdeaProjects/pay-wsg.springframework.hateoas.com.ita.security', name: 'spring-hateoas.com.ita.security-web', version: '4.2.1.RELEASE'
-    compile group: 'org.springframework.hateoas.com.ita.security', name: 'spring-hateoas.com.ita.security-ldap', version: '4.2.1.RELEASE'
-    compile group: 'org.springframework.hateoas.com.ita.security', name: 'spring-hateoas.com.ita.security-taglibs', version: '4.2.1.RELEASE'*/
-
 
     compile("com.h2database:h2")
-    compile("org.springframework.com.ita.security:spring-com.ita.security-web")
-    compile("org.springframework.com.ita.security.oauth:spring-com.ita.security-oauth2")
+    compile("org.springframework.security:spring-security-web")
+    compile("org.springframework.security.oauth:spring-security-oauth2")
     compile("org.springframework.boot:spring-boot-starter-hateoas")
     compile("org.springframework.boot:spring-boot-starter-data-jpa")
     compile("org.springframework.boot:spring-boot-devtools")
