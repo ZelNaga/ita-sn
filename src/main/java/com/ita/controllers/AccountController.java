@@ -1,7 +1,9 @@
 package com.ita.controllers;
 
+import com.ita.entities.Account;
 import com.ita.repositories.AccountsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,30 +20,36 @@ public class AccountController {
     @Autowired
     private AccountsRepository repository;
 
-    /*@RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<ResponseBody> create(@RequestBody Account input) {
+    @RequestMapping(method = RequestMethod.POST, produces = "application/json")
+    public ResponseEntity<String> create(@RequestBody Account input) {
 
         return repository.findByLogin(input.getLogin())
-                .map(a -> {
-
-                    String message = String.format("user.exist - [%s]", a.getLogin());
-                    ResponseBody body = new ResponseBody.RBBuilder(HttpStatus.CONFLICT, message).build();
-                    return ResponseEntity.ok(body);
-
-                }).orElseGet(() -> {
-
-                    Account account = repository.saveAndFlush(new Account(input.getLogin(), input.getPassword()));
-                    String message = String.format("user.created - [%s]", account.getLogin());
-                    ResponseBody body = new ResponseBody.RBBuilder(HttpStatus.CREATED, message).build();
-                    return ResponseEntity.ok(body);
-
+                .map(a -> ResponseEntity.status(HttpStatus.CONFLICT).body("user.already.exist"))
+                .orElseGet(() -> {
+                    repository.saveAndFlush(new Account(input.getLogin(), input.getPassword(), input.getName()));
+                    return ResponseEntity.status(HttpStatus.OK).body("user.created");
                 });
 
-    }*/
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE, produces = "application/json")
+    public ResponseEntity<String> delete(Principal principal) {
+
+        return repository.findByLogin(principal.getName())
+                .map(a -> {
+
+                    repository.delete(a);
+                    return ResponseEntity.status(HttpStatus.OK).body("user.deleted");
+                })
+                .orElseGet(() -> {
+                    return ResponseEntity.status(HttpStatus.CONFLICT).body("user.!found");
+                });
+
+    }
 
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<String> read(Principal principal) {
-        return ResponseEntity.ok(principal.getName());
+    public ResponseEntity<?> read(Principal principal) {
+        return ResponseEntity.ok(repository.findByLogin(principal.getName()).get());
     }
 
     /*@RequestMapping(method = RequestMethod.PUT)

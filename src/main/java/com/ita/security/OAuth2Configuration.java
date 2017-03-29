@@ -21,7 +21,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 @EnableAuthorizationServer
 public class OAuth2Configuration extends AuthorizationServerConfigurerAdapter {
 
-    public static final String RESOURCE_ID = "pay-ws";
+    public static final String RESOURCE_ID = "ita-sn-ws";
 
     // This is required for password grants, which we specify below as one of the
     // {@literal authorizedGrantTypes()}.
@@ -47,7 +47,7 @@ public class OAuth2Configuration extends AuthorizationServerConfigurerAdapter {
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
 
         clients.inMemory()
-                .withClient("mobile-" + RESOURCE_ID)
+                .withClient(RESOURCE_ID)
                 .authorizedGrantTypes("password", "authorization_code", "refresh_token")
                 .authorities("ROLE_USER")
                 .scopes("write")

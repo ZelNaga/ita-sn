@@ -21,15 +21,17 @@ public class Account {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
+    private String name;
+
     protected Account() {
 
     }
 
-    public Account(String login, String password) {
+    public Account(String login, String password, String name) {
 
         this.login = login;
         this.password = password;
-
+        this.name = name;
     }
 
     public Long getId() {
@@ -62,6 +64,14 @@ public class Account {
         this.password = password;
         return this;
 
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override

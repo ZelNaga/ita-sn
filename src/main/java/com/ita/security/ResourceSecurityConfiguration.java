@@ -21,7 +21,7 @@ public class ResourceSecurityConfiguration extends ResourceServerConfigurerAdapt
         http.authorizeRequests()
                 .antMatchers(HttpMethod.POST, "/accounts")
                 .permitAll()
-                .antMatchers("/h2/**", "/health/**", "/info/**", "/metrics/**", "/trace/**", "/actuator/**", "/data")
+                .antMatchers("/accounts/test/**", "/h2/**", "/health/**", "/info/**", "/metrics/**", "/trace/**", "/actuator/**", "/data")
                 .permitAll()
                 .anyRequest()
                 .authenticated()

@@ -42,8 +42,10 @@ public class ItaSnApp {
 
         return (args) -> {
 
-            Arrays.asList("andrew,vitalii".split(","))
-                    .forEach(a -> accountsRepository.saveAndFlush(new Account(a, "password")));
+            /*Arrays.asList("andrew,dima".split(","))
+                    .forEach(a -> accountsRepository.saveAndFlush(new Account(a, "password")));*/
+
+            accountsRepository.saveAndFlush(new Account("l", "p", "Test name"));
 
         };
 
