@@ -12,10 +12,6 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 
-/**
- * Created by zelnaga on 02.02.17.
- */
-
 @Configuration
 @EnableResourceServer
 @EnableAuthorizationServer
@@ -48,7 +44,7 @@ public class OAuth2Configuration extends AuthorizationServerConfigurerAdapter {
 
         clients.inMemory()
                 .withClient(RESOURCE_ID)
-                .authorizedGrantTypes("password", "authorization_code", "refresh_token")
+                .authorizedGrantTypes("password")
                 .authorities("ROLE_USER")
                 .scopes("write")
                 .resourceIds(RESOURCE_ID)

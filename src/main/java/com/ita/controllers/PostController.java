@@ -8,12 +8,18 @@ import com.ita.repositories.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.oauth2.common.OAuth2AccessToken;
+import org.springframework.security.oauth2.provider.OAuth2Authentication;
+import org.springframework.security.oauth2.provider.token.AuthorizationServerTokenServices;
+import org.springframework.security.oauth2.provider.token.ConsumerTokenServices;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.security.Principal;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Created by asv on 01.04.17.
@@ -38,6 +44,20 @@ public class PostController {
                     return ResponseEntity.status(HttpStatus.OK).body("post.created");
                 })
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.CONFLICT).body("user.!found"));
+
+    }
+
+    @RequestMapping(method = RequestMethod.GET  , produces = "application/json")
+    public ResponseEntity<List<Post>> getLastFive(Principal principal) {
+
+        List<Post> posts = new  LinkedList();
+
+        return accountsRepository.findByLogin(principal.getName())
+                .map(a -> {
+
+                    return ResponseEntity.status(HttpStatus.OK).body(postRepository.findFirst5ByAccountIdOrderByIdDesc(a.getId()));
+                })
+                .orElseGet(() -> ResponseEntity.status(HttpStatus.CONFLICT).body(posts));
 
     }
 }

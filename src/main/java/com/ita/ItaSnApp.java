@@ -1,6 +1,8 @@
 package com.ita;
 
 import com.ita.entities.Account;
+import com.ita.entities.Post;
+import com.ita.repositories.PostRepository;
 import org.apache.catalina.filters.RequestDumperFilter;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -38,14 +40,24 @@ public class ItaSnApp {
 
     //this method creates fake data just for application development and should be removed in production
     @Bean
-    public CommandLineRunner loadData(AccountsRepository accountsRepository) {
+    public CommandLineRunner loadData(AccountsRepository accountsRepository, PostRepository postRepository) {
 
         return (args) -> {
 
             /*Arrays.asList("andrew,dima".split(","))
                     .forEach(a -> accountsRepository.saveAndFlush(new Account(a, "password")));*/
 
-            accountsRepository.saveAndFlush(new Account("l", "p", "Test name"));
+            Account account = accountsRepository.saveAndFlush(new Account("l", "p", "Test name"));
+            Post p1 = new Post(account, "Post1");
+            Post p2 = new Post(account, "Post2");
+            Post p3 = new Post(account, "Post3");
+            Post p4 = new Post(account, "Post4");
+            Post p5 = new Post(account, "Post5");
+            Post p6 = new Post(account, "Post6");
+            Post p7 = new Post(account, "Post7");
+
+            postRepository.save(Arrays.asList(p1, p2, p3, p4, p5, p6, p7));
+
 
         };
 

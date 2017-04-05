@@ -1,5 +1,7 @@
 package com.ita.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -13,6 +15,7 @@ import javax.persistence.ManyToOne;
 public class Post {
 
     @ManyToOne
+    @JsonIgnore
     private Account account;
 
     @Id
