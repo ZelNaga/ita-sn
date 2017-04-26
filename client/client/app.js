@@ -44,27 +44,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
 
 });
 
-function getUserLast5Posts($scope, $http, $localStorage) {
-
-
-    $http({
-        method : "GET",
-        url : "http://127.0.0.1:8080/posts",
-        headers: {
-            "Authorization" : "Bearer " + $localStorage.accessToken
-        }
-    }).then(function mySucces(response) {
-        $scope.posts = response.data;
-    }, function myError(response) {
-        //TODO handle error response
-    });
-
-}
-
-
-
-
-
 
 app.controller('LoginCtrl', function($scope, $http, $localStorage, $state) {
     $scope.login = function() {
@@ -85,46 +64,3 @@ app.controller('LoginCtrl', function($scope, $http, $localStorage, $state) {
     };
 });
 
-app.controller('PostCtrl', function($scope, $http, $localStorage) {
-
-    getUserLast5Posts($scope, $http, $localStorage);
-
-    $scope.savePost = function() {
-
-
-        $http({
-            method : "POST",
-            url : "http://127.0.0.1:8080/posts",
-            headers: {
-                "Authorization" : "Bearer " + $localStorage.accessToken
-            },
-            data: $scope.post
-        }).then(function mySucces(response) {
-            $scope.post.text = '';
-        }, function myError(response) {
-            //TODO handle error response
-        });
-
-
-    };
-
-    $scope.refresh = function() {
-
-
-        $http({
-            method : "GET",
-            url : "http://127.0.0.1:8080/posts",
-            headers: {
-                "Authorization" : "Bearer " + $localStorage.accessToken
-            }
-        }).then(function mySucces(response) {
-            $scope.posts = response.data;
-        }, function myError(response) {
-            //TODO handle error response
-        });
-
-
-    };
-
-
-});

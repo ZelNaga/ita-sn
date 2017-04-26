@@ -6,6 +6,7 @@ import com.ita.entities.Post;
 import com.ita.repositories.AccountsRepository;
 import com.ita.repositories.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
@@ -47,17 +48,16 @@ public class PostController {
 
     }
 
-    @RequestMapping(method = RequestMethod.GET  , produces = "application/json")
-    public ResponseEntity<List<Post>> getLastFive(Principal principal) {
+    @RequestMapping(method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<List<Post>> getLastFive(Principal principal,  Pageable pageable) {
 
-        List<Post> posts = new  LinkedList();
+        List<Post> posts = new LinkedList();
 
         return accountsRepository.findByLogin(principal.getName())
-                .map(a -> {
-
-                    return ResponseEntity.status(HttpStatus.OK).body(postRepository.findFirst5ByAccountIdOrderByIdDesc(a.getId()));
-                })
-                .orElseGet(() -> ResponseEntity.status(HttpStatus.CONFLICT).body(posts));
+                .map(a -> ResponseEntity.status(HttpStatus.OK)
+                        .body(postRepository.findAllByAccountIdOrderByIdDesc(a.getId(), pageable)))
+                .orElseGet(() -> ResponseEntity.status(HttpStatus.CONFLICT)
+                        .body(posts));
 
     }
 }
