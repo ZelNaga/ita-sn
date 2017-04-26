@@ -28,6 +28,7 @@ import java.util.Arrays;
 
 @SpringBootApplication
 @EnableResourceServer
+//Dimas cumshot
 public class ItaSnApp {
 
     //entry point of application
