@@ -1,19 +1,32 @@
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-sm-12">
+        <div ui-view="navbar@home"></div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
         <h1>Use info</h1>
         <h2>User id - {{user.id}}</h2>
         <h2>User login - {{user.login}}</h2>
         <h2>User name - {{user.name}}</h2>
     </div>
+    <div class="col-sm-2"></div>
 </div>
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
         <div ui-view="addPost@home"></div>
     </div>
-    <div class="col-md-12">
+    <div class="col-sm-2"></div>
+</div>
+<div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
         <div ui-view="posts@home"></div>
     </div>
+    <div class="col-sm-2"></div>
 </div>
 
 

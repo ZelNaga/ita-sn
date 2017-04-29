@@ -111,7 +111,6 @@ public class ItaSnApp {
         filterRegistrationBean.setOrder(Ordered.HIGHEST_PRECEDENCE);
 
         return filterRegistrationBean;
-
-    }//comment
+    }
 
 }

@@ -27,7 +27,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
             },
             url: '/home',
             views: {
-                '': { templateUrl: 'home-page.html' },
+                '': {
+                    templateUrl: 'home-page.html'
+                },
+                'navbar@home': {
+                    templateUrl: 'navbar.html'
+                },
                 'addPost@home': {
                     templateUrl: 'add-post-form.html',
                      controller: 'PostCtrl'
@@ -36,6 +41,17 @@ app.config(function($stateProvider, $urlRouterProvider) {
                     templateUrl: 'user-posts.html',
                     controller: 'PostCtrl'
                 }
+            },
+            url: '/personalInfo',
+            views: {
+                'navbar@home': {
+                    templateUrl: 'navbar.html'
+                },
+                'personalInfo@home': {
+                    templateUrl: 'personal-info.html',
+                    // controller: 'PersonalInfoCtrl'
+                }
+
             },
             controller: function($scope, userObj) {
                 $scope.user = userObj.data;
