@@ -1,4 +1,4 @@
-app.controller('PostCtrl', function($scope, $http, $localStorage) {
+app.controller('HomeController', function($scope, $http, $localStorage) {
     $scope.posts = [];
     $scope.page = 0;
     $scope.pageSize = 15;

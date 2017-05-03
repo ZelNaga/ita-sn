@@ -1,82 +1,41 @@
-var app = angular.module('ItaSnClient', ["ngStorage", "ui.router"]);
+var app = angular.module('app', ["ngStorage", "ui.router"]);
 
-app.config(function($stateProvider, $urlRouterProvider) {
 
+app.config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/login');
 
     $stateProvider
-
+        .state('personal', {
+            url: '/personal',
+            templateUrl: 'personal-info.html',
+            controller: 'PersonalInfoCtrl'
+        })
         .state('login', {
             url: '/login',
             templateUrl: 'login.html',
             controller: 'LoginCtrl'
         })
-
         .state('home', {
-            resolve:{
-                userObj:  function($http, $localStorage){
-                    // $http returns a promise for the url data
-                    return $http({
-                        method : "GET",
-                        url : "http://127.0.0.1:8080/accounts",
-                        headers: {
-                            "Authorization" : "Bearer " + $localStorage.accessToken
-                        }
-                    });
-                }
-            },
             url: '/home',
-            views: {
-                '': {
-                    templateUrl: 'home-page.html'
-                },
-                'navbar@home': {
-                    templateUrl: 'navbar.html'
-                },
-                'addPost@home': {
-                    templateUrl: 'add-post-form.html',
-                     controller: 'PostCtrl'
-                },
-                'posts@home': {
-                    templateUrl: 'user-posts.html',
-                    controller: 'PostCtrl'
-                }
-            },
-            url: '/personalInfo',
-            views: {
-                'navbar@home': {
-                    templateUrl: 'navbar.html'
-                },
-                'personalInfo@home': {
-                    templateUrl: 'personal-info.html',
-                    // controller: 'PersonalInfoCtrl'
-                }
+            templateUrl: 'home-page.html',
+            controller: 'HomeController'
+        })
+    ;
+});
 
-            },
-            controller: function($scope, userObj) {
-                $scope.user = userObj.data;
-            }
-        });
+app.directive('addPost', function () {
+    return {
+        restrict: 'E',
+        templateUrl: 'templates/add-post-form.html'
+    }
+});
 
+app.directive('userPost', function () {
+    return {
+        restrict: 'E',
+        templateUrl: 'templates/user-posts.html'
+    }
 });
 
 
-app.controller('LoginCtrl', function($scope, $http, $localStorage, $state) {
-    $scope.login = function() {
-        $http({
-            method : "POST",
-            url : "http://127.0.0.1:8080/oauth/token?password=" + $scope.user.password + "&username=" + $scope.user.login + "&grant_type=password&scope=write&client_secret=123456&client_id=ita-sn-ws",
-            headers: {
-                "Authorization" : "Basic " + btoa("ita-sn-ws:123456")
-            }
-        }).then(function mySucces(response) {
-            $localStorage.accessToken = response.data.access_token;
-            $state.go('home');
-        }, function myError(response) {
-            //TODO handle error response
-            $scope.error = response.message;
-            //$scope.resp = response.data.message;
-        });
-    };
-});
 
