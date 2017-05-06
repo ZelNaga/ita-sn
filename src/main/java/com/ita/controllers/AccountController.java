@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.Optional;
 
 /**
  * Created by zelnaga on 07.02.17.
@@ -49,7 +50,8 @@ public class AccountController {
 
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<?> read(Principal principal) {
-        return ResponseEntity.ok(repository.findByLogin(principal.getName()).get());
+        Optional<Account> account = repository.findByLogin(principal.getName());
+        return ResponseEntity.ok(account.get());
     }
 
     /*@RequestMapping(method = RequestMethod.PUT)

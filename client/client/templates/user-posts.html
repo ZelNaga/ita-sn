@@ -1,3 +1,20 @@
-<div class="col-sm-8" id="post-div" ng-repeat="post in posts">
-    <h4>{{ post.text }}</h4>
+<div class="col-sm-12" id="post-div" ng-repeat="post in posts" style="background-color: white; margin: 2%; padding: 2%">
+    <div style="width: 10%; float: left">
+        <a>
+            <img src="img/circleMiniAva.png" class="img-circle icon-kor" alt="ava" width="44"
+                 height="44"/>
+        </a>
+    </div>
+    <div style="width: 90%; float: left">
+        <h3>{{ user.name }}</h3>
+        <h4>{{ post.text }}</h4>
+    </div><br><br><br><br>
+    <hr>
+    <div style="text-align: left; float: left; width: 50%">
+        <a href="#">
+            <img src="img/likeico.png" alt="like"/>
+        </a>
+        Мені подобається
+    </div>
+    <div style="text-align: right; float: right; width: 50%">Коментувати</div>
 </div>

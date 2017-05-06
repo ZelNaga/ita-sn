@@ -4,6 +4,22 @@ app.controller('HomeController', function($scope, $http, $localStorage) {
     $scope.pageSize = 15;
     $scope.token = $localStorage.accessToken; // move to rootscope
 
+    $scope.loadUser = function($scope, $http, $localStorage) {
+        $http({
+            method : "GET",
+            url : "http://127.0.0.1:8080/accounts",
+            headers: {
+                "Authorization" : "Bearer " + $localStorage.accessToken
+            }
+        }).then(function mySucces(response) {
+            $scope.user = response.data;
+        }, function myError(response) {
+            //TODO handle error response
+        });;
+    };
+
+    $scope.loadUser($scope, $http, $localStorage);
+
     $scope.savePost = function() {
         $http({
             method : "POST",

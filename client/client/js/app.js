@@ -5,11 +5,6 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/login');
 
     $stateProvider
-        .state('personal', {
-            url: '/personal',
-            templateUrl: 'personal-info.html',
-            controller: 'PersonalInfoCtrl'
-        })
         .state('login', {
             url: '/login',
             templateUrl: 'login.html',
@@ -20,7 +15,34 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: 'home-page.html',
             controller: 'HomeController'
         })
+        .state('personal', {
+            url: '/personal',
+            templateUrl: 'personal-info.html',
+            controller: 'PersonalInfoCtrl'
+        })
+        .state('contacts', {
+            url: '/contacts',
+            templateUrl: 'contacts.html',
+            controller: 'ContactsCtrl'
+        })
+        .state('education', {
+            url: '/education',
+            templateUrl: 'education.html',
+            controller: 'EducationCtrl'
+        })
+        .state('career', {
+            url: '/career',
+            templateUrl: 'career-page.html',
+            controller: 'CareerCtrl'
+        })
     ;
+});
+
+app.directive('navbar', function () {
+    return {
+        restrict: 'E',
+        templateUrl: 'templates/navbar.html'
+    }
 });
 
 app.directive('addPost', function () {
