@@ -1,8 +1,18 @@
 <form ng-submit="savePost()" style="background-color: white">
     <div class="form-group">
-        <label for="inputText">Post text</label>
-        <textarea class="form-control" id="inputText" rows="3" ng-model="post.text" style="border: none"></textarea>
+        <div style="width: 12%; float: left">
+            <img src="img/circleMiniAvaForPosts.png" class="img-circle" alt="ava" width="63" height="63"/>
+        </div>
+        <div style="width: 68%; float: left">
+            <textarea class="form-control form-control-add-post textarea-add-post" id="inputText" rows="2" ng-model="post.text" placeholder="Що у вас нового?"
+                      style="border: none"></textarea>
+        </div>
+        <div style="width: 20%; float: left">
+            <img src="img/clip.png" alt="clip"/>
+            <img src="img/smile.png" alt="smile"/>
+            <img src="img/picture.png" alt="picture"/>
+            <img src="img/video.png" alt="video"/>
+        </div>
     </div>
-
     <button ng-click="refresh()" type="submit" class="btn btn-default">Submit</button>
 </form>

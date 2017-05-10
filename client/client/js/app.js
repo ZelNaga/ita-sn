@@ -35,6 +35,31 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: 'career-page.html',
             controller: 'CareerCtrl'
         })
+        .state('group', {
+            url: '/group',
+            templateUrl: 'group.html',
+            controller: 'GroupCtrl'
+        })
+        .state('friends', {
+            url: '/friends',
+            templateUrl: 'friends.html',
+            controller: 'FriendsCtrl'
+        })
+        .state('news', {
+            url: '/news',
+            templateUrl: 'news.html',
+            controller: 'NewsCtrl'
+        })
+        .state('photo', {
+            url: '/photo',
+            templateUrl: 'photo.html',
+            controller: 'PhotoCtrl'
+        })
+        .state('video', {
+            url: '/video',
+            templateUrl: 'video.html',
+            controller: 'VideoCtrl'
+        })
     ;
 });
 

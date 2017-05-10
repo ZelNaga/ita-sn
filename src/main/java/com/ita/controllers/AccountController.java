@@ -27,7 +27,8 @@ public class AccountController {
         return repository.findByLogin(input.getLogin())
                 .map(a -> ResponseEntity.status(HttpStatus.CONFLICT).body("user.already.exist"))
                 .orElseGet(() -> {
-                    repository.saveAndFlush(new Account(input.getLogin(), input.getPassword(), input.getName()));
+                    repository.saveAndFlush(new Account(input.getLogin(), input.getPassword(), input.getName(),
+                                                        input.getDateOfBirth(), input.getCourse(), input.getSellPhone(), input.getSkype(), input.getGmail()));
                     return ResponseEntity.status(HttpStatus.OK).body("user.created");
                 });
 

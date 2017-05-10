@@ -50,7 +50,7 @@ public class ItaSnApp {
             /*Arrays.asList("andrew,dima".split(","))
                     .forEach(a -> accountsRepository.saveAndFlush(new Account(a, "password")));*/
 
-            Account account = accountsRepository.saveAndFlush(new Account("l", "p", "Test name"));
+            Account account = accountsRepository.saveAndFlush(new Account("l", "p", "Комарова Людмила", "3 лютого", "WEB дизайнер", "096-246-54-00", "komarova0302", "komarova0302@gmail.com"));
             List<Post> posts = IntStream.range(1, 100).boxed()
                     .map(i -> new Post(account, "Post" + i))
                     .collect(Collectors.toList());
