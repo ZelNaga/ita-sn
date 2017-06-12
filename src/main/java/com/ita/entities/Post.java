@@ -2,10 +2,7 @@ package com.ita.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 /**
  * Created by asv on 01.04.17.
@@ -17,6 +14,7 @@ public class Post {
     @ManyToOne
     @JsonIgnore
     private Account account;
+    
 
     @Id
     @GeneratedValue
@@ -24,7 +22,8 @@ public class Post {
 
     private String text;
 
-    protected Post() {}
+    protected Post() {
+    }
 
     public Post(Account account, String text) {
 
