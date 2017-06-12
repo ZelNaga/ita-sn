@@ -1,0 +1,224 @@
+@font-face {
+    font-family: "MyriadProRegular";
+    src: url("fonts/MyriadProRegular/MyriadProRegular.eot");
+    src: url("fonts/MyriadProRegular/MyriadProRegular.eot?#iefix") format("embedded-opentype"),
+    url("fonts/MyriadProRegular/MyriadProRegular.woff") format("woff"),
+    url("fonts/MyriadProRegular/MyriadProRegular.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "RobotoRegular";
+    src: url("fonts/RobotoRegular/RobotoRegular.eot");
+    src: url("fonts/RobotoRegular/RobotoRegular.eot?#iefix") format("embedded-opentype"),
+    url("fonts/RobotoRegular/RobotoRegular.woff") format("woff"),
+    url("fonts/RobotoRegular/RobotoRegular.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+/*-------------navbar style---------------*/
+
+.col-sm-12-navbar, .col-sm-12-navbar, .col-md-12-navbar, .col-lg-12-navbar {
+    position: relative;
+    min-height: 1px;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover {
+    color: white;
+    background-color: #00829c;
+}
+
+.navbar-default .navbar-nav > li > a {
+    text-decoration: none;
+    color: black;
+    font-family: Myriad Pro, sans-serif;
+    text-align: center;
+    font-size: 14px;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+    text-decoration: none;
+    color: black;
+}
+
+.navbar-default {
+    background-color: #00829c;
+}
+
+.search-form {
+    border: none;
+}
+
+.navbar-brand {
+    padding: 15px 15px 15px 0;
+}
+
+/* ---------------------personalInfo, contacts, education, career pages------------------------ */
+
+a:hover {
+    text-decoration: none;
+}
+
+a:focus {
+    text-decoration: none;
+}
+
+.a-style-kor:hover {
+    text-decoration: none;
+}
+
+.a-style-kor {
+    text-decoration: none;
+    color: black;
+    font-family: Myriad Pro, sans-serif;
+    text-align: center;
+    font-size: 14px;
+}
+
+.text-main {
+    text-decoration: none;
+    color: black;
+    font-family: RobotoRegular, sans-serif;
+    font-size: 34px;
+}
+
+.text-rightPanel:hover {
+    color: #6282ad;
+}
+
+.text-rightPanel:active {
+    text-decoration: none;
+}
+
+.text-rightPanel {
+    text-decoration: none;
+    color: black;
+    font-family: RobotoRegular, sans-serif;
+    font-size: 28px;
+    text-align: left;
+}
+
+.text-rightPanel-active {
+    text-decoration: none;
+    color: #6282ad;
+}
+
+.text-lable-kor {
+    color: black;
+    font-family: RobotoRegular, sans-serif;
+    font-size: 28px;
+    font-weight: normal;
+    text-align: right;
+}
+
+.border-div-bottom {
+    border-bottom: 1px solid black;
+}
+
+.input-group {
+    background-color: white;
+}
+
+.icon-kor {
+    margin: 10px;
+}
+
+.input-area {
+    border: 1px solid black;
+    width: 250px;
+    line-height: 36px;
+}
+
+.body-background-color {
+    background-color: #efefef;
+}
+
+.jumbotron {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.jumbotron {
+    padding: 0px;
+    margin-bottom: 0px;
+    color: inherit;
+    background-color: #eee;
+}
+
+.container {
+    margin-right: 0;
+    margin-left: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.container {
+    width: 100%;
+}
+
+/* ---------------------home page------------------------ */
+
+.big-Ava {
+
+}
+
+.user-home-page-main-info {
+    width: 50%;
+    float: left
+}
+
+.btn-redact {
+    border-radius: 0px;
+    margin: 2%;
+    width: 100%;
+}
+
+.user-home-page-text-color{
+    color: #98999a;
+}
+
+/* ---------------------add post------------------------ */
+
+.form-control-add-post:focus {
+    webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.textarea-add-post {
+    resize: none
+}
+
+/* ---------------------user posts------------------------ */
+.user-post {
+    background-color: white;
+    margin: 2% 0 2% 0;
+    padding: 2%
+}
+
+.post-main-info {
+    width: 90%;
+    float: left;
+}
+
+.post-like {
+    text-align: left;
+    float: left;
+    width: 50%;
+}
+
+.post-comment {
+    text-align: right;
+    float: right;
+    width: 50%;
+}
+
+.post-circle-mini-ava {
+    width: 10%;
+    float: left;
+}
+
+/* ---------------------group-page------------------------ */
