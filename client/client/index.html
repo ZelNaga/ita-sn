@@ -1,23 +1,35 @@
 <!DOCTYPE html>
-<html ng-app="ItaSnClient" lang="en">
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"/>
     <script src="//code.jquery.com/jquery-2.0.3.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.27/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
-    <script src="app.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controller/IndexCtrl.js"></script>
+    <script src="js/controller/LoginCtrl.js"></script>
+    <script src="js/controller/HomeCtrl.js"></script>
+    <script src="js/controller/PersonalInfoCtrl.js"></script>
+    <script src="js/controller/ContactsCtrl.js"></script>
+    <script src="js/controller/EducationCtrl.js"></script>
+    <script src="js/controller/CareerCtrl.js"></script>
+    <script src="js/controller/GroupCtrl.js"></script>
+    <script src="js/controller/FriendsCtrl.js"></script>
+    <script src="js/controller/NewsCtrl.js"></script>
+    <script src="js/controller/Photo.js"></script>
+    <script src="js/controller/VideoCtrl.js"></script>
+    <link href="css/style.css" rel="stylesheet"/>
 </head>
-    <body>
-
-        <div class="jumbotron">
-            <div class="container">
-                <div class="col-md-offset-2 col-md-8">
-                    <div ui-view></div>
-                </div>
-            </div>
-        </div>
-    </body>
+<body ng-app="app" ng-controller="IndexCtrl" style="background-color: #efefef">
+<!--<div ng-show="!hideNavbar" class="row">-->
+    <!--<navbar></navbar>-->
+<!--</div>-->
+<div ui-view></div>
+</body>
 </html>

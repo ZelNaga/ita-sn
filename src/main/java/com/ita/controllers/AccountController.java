@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.Optional;
 
 /**
  * Created by zelnaga on 07.02.17.
@@ -26,7 +27,8 @@ public class AccountController {
         return repository.findByLogin(input.getLogin())
                 .map(a -> ResponseEntity.status(HttpStatus.CONFLICT).body("user.already.exist"))
                 .orElseGet(() -> {
-                    repository.saveAndFlush(new Account(input.getLogin(), input.getPassword(), input.getName()));
+                    repository.saveAndFlush(new Account(input.getLogin(), input.getPassword(), input.getName(),
+                                                        input.getDateOfBirth(), input.getCourse(), input.getSellPhone(), input.getSkype(), input.getGmail()));
                     return ResponseEntity.status(HttpStatus.OK).body("user.created");
                 });
 
@@ -49,7 +51,8 @@ public class AccountController {
 
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<?> read(Principal principal) {
-        return ResponseEntity.ok(repository.findByLogin(principal.getName()).get());
+        Optional<Account> account = repository.findByLogin(principal.getName());
+        return ResponseEntity.ok(account.get());
     }
 
     /*@RequestMapping(method = RequestMethod.PUT)

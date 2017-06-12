@@ -1,19 +1,67 @@
+<navbar></navbar>
 <div class="row">
-    <div class="col-md-12">
-        <h1>Use info</h1>
-        <h2>User id - {{user.id}}</h2>
-        <h2>User login - {{user.login}}</h2>
-        <h2>User name - {{user.name}}</h2>
+    <div class="col-sm-12">
+        <div ui-view="navbar@home"></div>
     </div>
+</div>
+<div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-3">
+        <div class="thumbnail">
+            <a href="img/bigAva.png" target="_blank">
+                <img src="img/bigAva.png" alt="Ava" width="304" height="236">
+                <div class="caption">
+                    <button type="button" class="btn btn-primary btn-redact">Редагувати</button>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="col-sm-6" style="background-color: white">
+        <h1>{{user.name}}</h1>
+        <hr>
+        <h2>
+            <div class="user-home-page-main-info">Дата народження:</div>
+            <div class="user-home-page-main-info">{{user.dateOfBirth}}</div>
+            <br><br>
+            <div class="user-home-page-main-info">Курс:</div>
+            <div class="user-home-page-main-info">{{user.course}}</div>
+            <br>
+            <hr>
+            Контакна інформація:
+        </h2>
+        <h3>
+            <div class="user-home-page-main-info">Моб. телефон:</div>
+            <div class="user-home-page-main-info">{{user.sellPhone}}</div>
+            <br><br>
+            <div class="user-home-page-main-info">Skype:</div>
+            <div class="user-home-page-main-info">{{user.skype}}</div>
+
+            <br><br>
+            <div class="user-home-page-main-info">Почта gmail:</div>
+            <div class="user-home-page-main-info">{{user.gmail}}</div>
+
+        </h3><br>
+        <!--<h2>User id - {{user.id}}</h2>-->
+        <!--<h2>User login - {{user.login}}</h2>-->
+
+    </div>
+    <div class="col-sm-2"></div>
 </div>
 
 <div class="row">
-    <div class="col-md-12">
-        <div ui-view="addPost@home"></div>
+    <div class="col-sm-1"></div>
+    <div class="col-sm-6">
+        <add-post></add-post>
     </div>
-    <div class="col-md-12">
-        <div ui-view="posts@home"></div>
+    <div class="col-sm-5"></div>
+</div>
+<div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-6">
+        <user-post></user-post>
     </div>
+    <div class="col-sm-4"></div>
 </div>
 
 

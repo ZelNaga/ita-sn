@@ -21,6 +21,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * Created by asv on 18.03.17.
@@ -47,18 +50,12 @@ public class ItaSnApp {
             /*Arrays.asList("andrew,dima".split(","))
                     .forEach(a -> accountsRepository.saveAndFlush(new Account(a, "password")));*/
 
-            Account account = accountsRepository.saveAndFlush(new Account("l", "p", "Test name"));
-            Post p1 = new Post(account, "Post1");
-            Post p2 = new Post(account, "Post2");
-            Post p3 = new Post(account, "Post3");
-            Post p4 = new Post(account, "Post4");
-            Post p5 = new Post(account, "Post5");
-            Post p6 = new Post(account, "Post6");
-            Post p7 = new Post(account, "Post7");
+            Account account = accountsRepository.saveAndFlush(new Account("l", "p", "Комарова Людмила", "3 лютого", "WEB дизайнер", "096-246-54-00", "komarova0302", "komarova0302@gmail.com"));
+            List<Post> posts = IntStream.range(1, 100).boxed()
+                    .map(i -> new Post(account, "Post" + i))
+                    .collect(Collectors.toList());
 
-            postRepository.save(Arrays.asList(p1, p2, p3, p4, p5, p6, p7));
-
-
+            postRepository.save(posts);
         };
 
     }
@@ -79,7 +76,7 @@ public class ItaSnApp {
     @Bean
     FilterRegistrationBean corsFilter() {
 
-        FilterRegistrationBean filterRegistrationBean =  new FilterRegistrationBean(new GenericFilterBean() {
+        FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean(new GenericFilterBean() {
 
             public void doFilter(ServletRequest req, ServletResponse res,
                                  FilterChain chain) throws IOException, ServletException {
@@ -114,7 +111,6 @@ public class ItaSnApp {
         filterRegistrationBean.setOrder(Ordered.HIGHEST_PRECEDENCE);
 
         return filterRegistrationBean;
-
     }
 
 }
